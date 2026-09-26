@@ -154,6 +154,44 @@ public partial class MainWindow : Window
             MessageBox.Show($"Ошибка: {ex.Message}");
         }
     }
+    private void OnDebugPdf(object sender, RoutedEventArgs e)
+{
+    var dlg = new OpenFileDialog { Filter = "PDF (*.pdf)|*.pdf" };
+    if (dlg.ShowDialog() != true) return;
+
+    try
+    {
+        using var doc = UglyToad.PdfPig.PdfDocument.Open(dlg.FileName);
+        var sb = new System.Text.StringBuilder();
+
+        sb.AppendLine($"=== Файл: {System.IO.Path.GetFileName(dlg.FileName)} ===");
+        sb.AppendLine($"=== Страниц: {doc.NumberOfPages} ===");
+
+        foreach (var page in doc.GetPages())
+        {
+            sb.AppendLine();
+            sb.AppendLine($"--- Страница {page.Number} ---");
+            var words = page.GetWords()
+                .Select(w => new { w.Text, X = w.BoundingBox.Left, Y = w.BoundingBox.Bottom })
+                .OrderByDescending(w => w.Y).ThenBy(w => w.X)
+                .ToList();
+
+            sb.AppendLine($"Всего слов: {words.Count}");
+            foreach (var w in words)
+                sb.AppendLine($"[X={w.X,7:F1} Y={w.Y,7:F1}] {w.Text}");
+        }
+
+        var outPath = System.IO.Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            "pdf_debug.txt");
+        System.IO.File.WriteAllText(outPath, sb.ToString(), System.Text.Encoding.UTF8);
+        MessageBox.Show($"Дамп сохранён в:\n{outPath}", "Отладка PDF");
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show($"Ошибка: {ex.Message}");
+    }
+}
 }
 
 public sealed class TransactionVm
