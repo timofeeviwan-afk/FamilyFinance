@@ -11,6 +11,7 @@
                 <Separator/>
                 <Button Content="Отчёт" Click="OnReport" Padding="8,2"/>
                 <Button Content="Бэкап" Click="OnBackup" Padding="8,2"/>
+                <Button Content="Отладка PDF" Click="OnDebugPdf" Padding="8,2"/>
             </ToolBar>
         </ToolBarTray>
 
