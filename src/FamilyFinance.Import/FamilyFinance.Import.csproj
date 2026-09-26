@@ -3,7 +3,7 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="UglyToad.PdfPig" Version="0.1.9" />
+    <PackageReference Include="PdfPig" Version="0.1.15" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FamilyFinance.Domain\FamilyFinance.Domain.csproj" />
