@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "2rChRWvuOOE=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Иван Тимофеев\\Documents\\FamilyFinance\\src\\FamilyFinance.Import\\FamilyFinance.Import.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Не удалось загрузить индекс службы для источника https://nuget.cdn.azure.cn/v3/index.json.",
+      "libraryId": "UglyToad.PdfPig"
+    }
+  ]
+}

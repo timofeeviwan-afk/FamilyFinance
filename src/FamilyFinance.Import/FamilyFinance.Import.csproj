@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="UglyToad.PdfPig" Version="0.1.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FamilyFinance.Domain\FamilyFinance.Domain.csproj" />
+  </ItemGroup>
+</Project>
